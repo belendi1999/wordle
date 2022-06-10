@@ -1,0 +1,29 @@
+* {
+    color:purple;
+    font-family: monospace;
+}
+body {
+    background-color: #2F1347;
+}
+.juego {
+    height: 120vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+.titulo {
+    text-align: center;
+    width: 510px;
+    border-bottom: solid 1px #3a3a3c;
+}
+
+.fila{
+    display: flex;
+}
+.celda{
+    color:black;
+    width: 40px;
+    height: 40px;
+    border: 2px black solid;
+}
