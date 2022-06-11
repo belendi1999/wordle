@@ -1,0 +1,37 @@
+DESCRIPCIÓN
+
+Tienes que adivinar una palabra de cinco letras que exista en español. Para ello tendrás que ir seleccionando palabras, se te iluminarán de verde las letras que estén en la posición correcta con respecto a la palabra a adivinar. Se te iluminarán de amarillo las que se encuentren en la palabra pero en la posición incorrecta. Tienes seis intentos.
+
+CASOS DE USO
+
+1. El usuario introduce una palabra.
+
+    1.1 El sistema empieza a reconocer las letras de la palabra que el usuario ha escrito. 
+
+    1.2 El sistema compara la palabra seleccionada por el usuario con la palabra aleatoria a adivinar
+
+    1.3 En caso de no coincidir. el sistema compara a las posiciones de las letras de la palabra seleccionada con la palabra aleatoria. 
+
+    1.4 El sistema devuelve al usuario una respuesta mediante cambios de color en las letras coincidentes. 
+
+    1.5 El sistema devuelve un error al usuario en caso de no existir la palabra. 
+
+    1.6 El sistema devuelve las casillas destacadas y un sonido en caso de que las palabras coincidan. 
+    
+    1.7 En caso de que el usuario no acierte la palabra, el sistema devuelve un mensaje con la palabra correcta. 
+
+2. FUNCIONALIDADES
+
+    2.1 Existen un teclado virtual. El usuario pulsa una tecla y el sistema recibe la tecla pulsada.
+    Procesar la tecla pulsada por el usuario.
+
+    2.2 Existe un diccionario de palabras. El sistema realiza una comparación entre la palabra seleccionada y la palabra extraída aleatoriamente.Comparar la palabra del usuario y la palabra extraída aleatoriamente y devolver las letras coincidentes de un color resaltante, en el caso de que coincidan con la posición de las letras de la palabra aleatoria serán verdes. En el caso de que no coincidan la posición pero si la incluya la devolverá de amarillo.
+
+    2.3 Comprobación de si la palabra introducida por el usuario existe en el archivo que he creado con palabras válidas.
+
+    2.4 Comprobación de si ambas palabras coinciden. Comprobaciñon de si todas las letras del evento anterior son verdes. Me devuelve verdadero o falso. 
+
+    2.5 Comprobación de que el usuario ha agotado todos los intentos posibles. Devolviendo si o no. 
+
+    2.6 Comprobación de que el usuario haya metido la cantidad de letras necesaria para jugar (5)
+

@@ -1,34 +1,39 @@
-let filaActual = 1
-let celdaActual = 1
-document.addEventListener("keydown", escribir)
 let botones = document.querySelectorAll("button")
-console.log(botones)
-
-function escribir(e){
-    let celdaActualElem 
-    if(filaActual === 1 && celdaActual === 1){
-        celdaActualElem = document.getElementById("celda1.1")
-        celdaActual ++
-    } 
-    else if(filaActual === 1 && celdaActual === 2){
-        celdaActualElem = document.getElementById("celda1.2")
-        celdaActual ++
-    } 
-    else if(filaActual === 1 && celdaActual === 3){
-        celdaActualElem = document.getElementById("celda1.3")
-        celdaActual ++
-    } 
-    console.log(e.key)
-    celdaActualElem.innerText = e.key
-}
-
+let casillas = document.querySelectorAll(".celda")
+let posicionCasillaActual = 0
 
 for( let boton of botones){
-    boton.addEventListener("click",teclaPresionada(boton.attributes["data-key"].value))
-    }
-    
+    boton.addEventListener("click", function() { teclaPresionada(boton.attributes["data-key"].value) })
+}
+
 
 
 function teclaPresionada(key){
     
+    if (key === "DELETE"){
+        borrar()
+    } 
+    else if (key === "ENTER"){
+        comprobarResultado()
+    }
+    else {
+        casillas[posicionCasillaActual].innerText = key 
+        posicionCasillaActual ++
+    }
+
 }
+
+function borrar(){
+    if (posicionCasillaActual % 5 !== 0){
+        posicionCasillaActual --
+        casillas[posicionCasillaActual].innerText = ""
+    }
+}
+
+function comprobarResultado(){
+    if (posicionCasillaActual !== 0 && posicionCasillaActual % 5 === 0 ){
+        console.log("envias palabrita")
+    }
+}
+
+    
