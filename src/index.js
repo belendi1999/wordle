@@ -1,10 +1,14 @@
 let botones = document.querySelectorAll("button")
 let casillas = document.querySelectorAll(".celda")
 let posicionCasillaActual = 0
-//let palabraAdivinar = arrayPalabras[Math.floor(Math.random() * arrayPalabras.length)]
+let palabraAdivinar = arrayPalabras[Math.floor(Math.random() * arrayPalabras.length)]
 let comprobar = false
 let primeraPalabraCompletada = false
 let segundaPalabraCompletada = false
+let terceraPalabraCompletada = false
+let cuartaPalabraCompletada = false 
+let quintaPalabraCompletada = false
+
 
 let palabraInt = ""
 
@@ -29,6 +33,12 @@ function teclaPresionada(key){
          return
         }else if(posicionCasillaActual === 10 && !segundaPalabraCompletada){
             return
+        }else if(posicionCasillaActual === 15 && !terceraPalabraCompletada){
+            return
+        }else if(posicionCasillaActual === 20 && !cuartaPalabraCompletada){
+            return
+        }else if(posicionCasillaActual === 25 && !quintaPalabraCompletada){
+            return
         }
             
         if(posicionCasillaActual !== 0 && posicionCasillaActual % 5 == 0){
@@ -49,6 +59,13 @@ function borrar(){
         return
     }else if(posicionCasillaActual === 10 && segundaPalabraCompletada){
         return
+    }else if(posicionCasillaActual === 15 && terceraPalabraCompletada){
+        return
+    }else if(posicionCasillaActual === 20 && cuartaPalabraCompletada){
+        return
+    }else if(posicionCasillaActual === 25 && quintaPalabraCompletada){
+        return
+  
     }
     if (posicionCasillaActual !== 0){
         posicionCasillaActual --
@@ -73,7 +90,7 @@ function comprobarResultado(){
 
 
 function adivinarPalabra(){
-    let palabraCorrecta = "PERRO"
+    let palabraCorrecta = palabraAdivinar
     let palabraIntroducida = palabraInt
 
     if (palabraIntroducida.length !== 5) {
@@ -87,64 +104,30 @@ function adivinarPalabra(){
         
     }
     else {
+        
         for (let i=0; i< palabraCorrecta.length; i++){
-            for (let j=0; j< palabraIntroducida.length; j++){
-              
-              
-                let colorLetra = ""
-                if (palabraCorrecta[i] === palabraIntroducida[j]){
-                    casillas[i].style.color = "green"
-                    
-                } 
-                console.log(casillas[i], palabraCorrecta[i], palabraIntroducida[j])
-              
+            if (palabraCorrecta[i] === palabraIntroducida[i]){
+                casillas[posicionCasillaActual - 5 + i ].style.color = "green"
                 
-            }
+            } else if (palabraCorrecta.includes(palabraIntroducida[i])){
+                casillas[posicionCasillaActual - 5 + i ].style.color = "yellow"
+            } else {
+                casillas[posicionCasillaActual - 5 + i ].style.color = "grey"
+            }  
         }
+        
         if(posicionCasillaActual == 5){
             primeraPalabraCompletada = true
         }else if(posicionCasillaActual == 10){
             segundaPalabraCompletada = true
+        }else if(posicionCasillaActual == 15){
+            terceraPalabraCompletada = true
+        }else if(posicionCasillaActual == 20){
+            cuartaPalabraCompletada = true
+        }else if(posicionCasillaActual == 25){
+            quintaPalabraCompletada = true
         }
     }
 }
-
-//* let palabra1 = "raiz"
-// let palabra2 = "arroz"
-/*  let repeatedChars = []
-PALABRA1[I] === PALABRA[I]
-
-    for (let i=0; i< palabra2.length; i++){
-      if (palabra1.contains(palabra2[i])){
-         repeatedChars.push(palabra2[i])
-       }
-  }
-
-  let palabra1 = "raiz"
-  let palabra2 = "arroz"
-  let palabrasRepetidas = []
-  let palabra2Copia = palabra2.split("")
-  
-   function comprobarLetras (){
-   palabra2Copia.forEach(function(letra){
-     if (palabra1.indexOf(letra) !== -1){
-       palabrasRepetidas.push(letra)
-     }
-     console.log(palabrasRepetidas)
-   })
-  
-   }
- 
-  function win (){
-    if (palabra1.localeCompare(palabra2) === 0){
-      return "win"
-    } else {
-      comprobarLetras()
-    }
-  }
- win()
-
-  */
-    
 
 

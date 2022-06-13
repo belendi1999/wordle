@@ -12,6 +12,7 @@ body {
     align-items: center;
 }
 .titulo {
+    margin-bottom: 10vh;
     text-align: center;
     width: 510px;
     border-bottom: solid 1px #3a3a3c;
@@ -27,8 +28,7 @@ body {
     border: 2px black solid;
 }
 .teclado {
-    width:590px;
-    background-color: #aaa;
+    margin-top: 10vh;
     overflow: hidden;
     text-align: center;
 }
