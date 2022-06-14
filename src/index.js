@@ -1,5 +1,6 @@
 let botones = document.querySelectorAll("button")
 let casillas = document.querySelectorAll(".celda")
+let tituloDom = document.querySelector("titulo")
 let posicionCasillaActual = 0
 let palabraAdivinar = arrayPalabras[Math.floor(Math.random() * arrayPalabras.length)]
 let comprobar = false
@@ -10,7 +11,7 @@ let cuartaPalabraCompletada = false
 let quintaPalabraCompletada = false
 
 
-let palabraInt = ""
+let palabraIntroducida = ""
 
 for( let boton of botones){
     boton.addEventListener("click", function() { teclaPresionada(boton.attributes["data-key"].value) })
@@ -19,7 +20,7 @@ for( let boton of botones){
 
 
 function teclaPresionada(key){
-    
+    console.log("entras aqui o que")
     if (key === "DELETE"){
         borrar()
     } 
@@ -82,52 +83,70 @@ function comprobarResultado(){
       for (let i = posicionCasillaActual - 5 ; i < posicionCasillaActual; i++){
         palabra += casillas[i].innerText
       }
-     palabraInt = palabra
-     console.log(palabraInt)
+     palabraIntroducida = palabra
+     console.log(palabraIntroducida)
     }
+    
 }
 
 
 
 function adivinarPalabra(){
-    let palabraCorrecta = palabraAdivinar
-    let palabraIntroducida = palabraInt
 
     if (palabraIntroducida.length !== 5) {
-        window.alert ("Not enough letters!")
+        swal ("Escribe 5 letras")
         
     }
 
    else if (!palabrasUnidas.includes(palabraIntroducida)) {
-        window.alert ("Word not in list!")
+        swal ("La palabra no existe")
         comprobar = false
         
     }
     else {
-        
-        for (let i=0; i< palabraCorrecta.length; i++){
-            if (palabraCorrecta[i] === palabraIntroducida[i]){
-                casillas[posicionCasillaActual - 5 + i ].style.color = "green"
+    
+        for (let i=0; i< palabraAdivinar.length; i++){
+            if (palabraAdivinar[i] === palabraIntroducida[i]){
+                casillas[posicionCasillaActual - 5 + i ].style.backgroundColor = "#B0F083"
+                document.querySelector(`button[data-key=${palabraIntroducida[i]}]`).style.backgroundColor =  "#B0F083"
+            
+            } else if (palabraAdivinar.includes(palabraIntroducida[i]) && contarLasLetrasDeUnaPalabra(palabraIntroducida[i], palabraIntroducida) <= contarLasLetrasDeUnaPalabra(palabraIntroducida[i], palabraAdivinar)){
+                casillas[posicionCasillaActual - 5 + i ].style.backgroundColor = "#F8EF84"
                 
-            } else if (palabraCorrecta.includes(palabraIntroducida[i])){
-                casillas[posicionCasillaActual - 5 + i ].style.color = "yellow"
             } else {
-                casillas[posicionCasillaActual - 5 + i ].style.color = "grey"
+                casillas[posicionCasillaActual - 5 + i ].style.backgroundColor = "#D1BECD"
+                document.querySelector(`button[data-key=${palabraIntroducida[i]}]`).style.backgroundColor =  "#D1BECD"
+                
             }  
         }
         
-        if(posicionCasillaActual == 5){
+        if(posicionCasillaActual === 5){
             primeraPalabraCompletada = true
-        }else if(posicionCasillaActual == 10){
+        }else if(posicionCasillaActual === 10){
             segundaPalabraCompletada = true
-        }else if(posicionCasillaActual == 15){
+        }else if(posicionCasillaActual === 15){
             terceraPalabraCompletada = true
-        }else if(posicionCasillaActual == 20){
+        }else if(posicionCasillaActual === 20){
             cuartaPalabraCompletada = true
-        }else if(posicionCasillaActual == 25){
+        }else if(posicionCasillaActual === 25){
             quintaPalabraCompletada = true
         }
     }
+    if (palabraAdivinar === palabraIntroducida){
+        swal ("Has adivinado la palabra, eres genial!")
+    } else if (posicionCasillaActual === 30){
+        swal ("oh no... la palabra correcta era: " + palabraAdivinar)
+    }
+
+
+
+    palabraIntroducida = ""
 }
+
+function contarLasLetrasDeUnaPalabra (letra, palabra){
+    return palabra.split(letra).length - 1
+}
+
+
 
 

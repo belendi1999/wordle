@@ -1,10 +1,11 @@
 * {
-    color:purple;
-    font-family: monospace;
+    color:black;
+    font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 body {
-    background-color: #2F1347;
+    background-color: white;
 }
+
 .juego {
     display: flex;
     flex-direction: column;
@@ -13,6 +14,7 @@ body {
 }
 .titulo {
     margin-bottom: 10vh;
+
     text-align: center;
     width: 510px;
     border-bottom: solid 1px #3a3a3c;
@@ -22,11 +24,14 @@ body {
     display: flex;
 }
 .celda{
-    color:white;
+    color:black;
+    text-align: center;
+    font-size: 30px;
     width: 40px;
     height: 40px;
     border: 2px black solid;
 }
+
 .teclado {
     margin-top: 10vh;
     overflow: hidden;
@@ -35,12 +40,18 @@ body {
 
     
 .teclado-container {
-    background-color:#C29DDC; /* Green */
-    border: none;
-    color: white;
-    padding: 15px 32px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
+    margin: 1rem 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
   }
+  .keyboard-button {
+    font-size: 1rem;
+    text-align: center;
+    font-weight: 700;
+    padding: 0.5rem;
+    margin: 0 2px;
+    cursor: pointer;
+    text-transform: uppercase;
+  }
+  
