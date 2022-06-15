@@ -92,7 +92,7 @@ function comprobarResultado(){
 
 function adivinarPalabra(){
 
-    palabraAdivinar = "TRAJE"
+ 
 
 
     if (palabraIntroducida.length !== 5) {
