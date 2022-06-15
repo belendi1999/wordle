@@ -20,7 +20,6 @@ for( let boton of botones){
 
 
 function teclaPresionada(key){
-    console.log("entras aqui o que")
     if (key === "DELETE"){
         borrar()
     } 
@@ -84,7 +83,7 @@ function comprobarResultado(){
         palabra += casillas[i].innerText
       }
      palabraIntroducida = palabra
-     console.log(palabraIntroducida)
+    
     }
     
 }
@@ -92,6 +91,9 @@ function comprobarResultado(){
 
 
 function adivinarPalabra(){
+
+    palabraAdivinar = "TRAJE"
+
 
     if (palabraIntroducida.length !== 5) {
         swal ("Escribe 5 letras")
@@ -104,16 +106,26 @@ function adivinarPalabra(){
         
     }
     else {
+       
     
         for (let i=0; i< palabraAdivinar.length; i++){
+         
             if (palabraAdivinar[i] === palabraIntroducida[i]){
+                console.log("jey " + palabraIntroducida[i])
                 casillas[posicionCasillaActual - 5 + i ].style.backgroundColor = "#B0F083"
                 document.querySelector(`button[data-key=${palabraIntroducida[i]}]`).style.backgroundColor =  "#B0F083"
             
-            } else if (palabraAdivinar.includes(palabraIntroducida[i]) && contarLasLetrasDeUnaPalabra(palabraIntroducida[i], palabraIntroducida) <= contarLasLetrasDeUnaPalabra(palabraIntroducida[i], palabraAdivinar)){
-                casillas[posicionCasillaActual - 5 + i ].style.backgroundColor = "#F8EF84"
+            } 
+            
+            else if (palabraAdivinar.includes(palabraIntroducida[i]) //&& contarLasLetrasDeUnaPalabra(palabraIntroducida[i], palabraIntroducida) <= contarLasLetrasDeUnaPalabra(palabraIntroducida[i], palabraAdivinar)
+            )
+            {
+
+                    casillas[posicionCasillaActual - 5 + i ].style.backgroundColor = "#F8EF84"
+              
                 
-            } else {
+            } else  {
+
                 casillas[posicionCasillaActual - 5 + i ].style.backgroundColor = "#D1BECD"
                 document.querySelector(`button[data-key=${palabraIntroducida[i]}]`).style.backgroundColor =  "#D1BECD"
                 
@@ -133,9 +145,13 @@ function adivinarPalabra(){
         }
     }
     if (palabraAdivinar === palabraIntroducida){
-        swal ("Has adivinado la palabra, eres genial!")
+        swal ("Has adivinado la palabra, eres genial!").then(function() {
+            window.location = "./game.html"
+        })
     } else if (posicionCasillaActual === 30){
-        swal ("oh no... la palabra correcta era: " + palabraAdivinar)
+        swal ("oh no... la palabra correcta era: " + palabraAdivinar).then(function() {
+            window.location = "./game.html"
+        })
     }
 
 
@@ -144,8 +160,10 @@ function adivinarPalabra(){
 }
 
 function contarLasLetrasDeUnaPalabra (letra, palabra){
+ 
     return palabra.split(letra).length - 1
 }
+
 
 
 
