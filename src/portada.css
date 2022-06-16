@@ -25,6 +25,7 @@ body{
 
 }
 .instrucciones{
+    font-style: italic;
     display: flex;
 }
 
