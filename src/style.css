@@ -54,6 +54,11 @@ body {
     cursor: pointer;
     text-transform: uppercase;
   }
+@media (max-width:400px) {
+.teclado{
+  width: 390px  ;
+}
+}
 
 
   
